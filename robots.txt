@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://brnlanna-ops.github.io/Brunalannaart/sitemap.xml

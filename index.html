@@ -192,6 +192,8 @@ button.card{font:inherit;color:inherit;text-align:left;cursor:pointer}
 .mu{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;width:54px;height:54px;border-radius:50%;border:3px solid var(--ink);background:var(--sol);color:var(--ink);font:600 1.5rem var(--sans);cursor:pointer;animation:sway 1.6s ease-in-out infinite alternate}.mu[hidden],.mup[hidden]{display:none}
 .mup{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:70;width:min(340px,calc(100vw - 32px))}
 @media(max-width:760px){.lbn{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));translate:none}.lb{padding-bottom:84px}.lb img{max-height:68vh}.ck{bottom:84px}.mu{bottom:84px}.mup{bottom:146px}}
+.mpc{background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;box-shadow:0 8px 24px #0004}.mpc b{font:italic 500 1.4rem var(--serif)}.mpc .btn{padding:.6rem 1.2rem;margin-top:4px}
+.mpc{padding:10px;align-items:stretch}.mpc iframe{width:100%;height:152px;border:0;border-radius:12px}.mpc .lnk{font-weight:600;font-size:.85rem;text-align:center}
 </style>
 </head>
 <body>
@@ -299,19 +301,20 @@ $('#flip').onclick=e=>{e.currentTarget.classList.toggle('f');burst(e.clientX,e.c
 
 // analytics: a tag do Google Analytics fica no <head>; aqui só eventos e o aviso de privacidade
 const GA_ID='G-0Z6RKWJHJB';
-const PLAYLIST='https://open.spotify.com/playlist/37i9dQZF1CKUUaf9RWwqI5';
+const PLAYLIST='https://open.spotify.com/playlist/4ynopDDdNMdvCY34khVPey';
 function track(n,p){try{gtag('event',n,p||{})}catch(x){}}
 document.addEventListener('click',e=>{const el=e.target.closest('a,button');if(!el)return;const sec=el.closest('nav,.hero,.start,.serv,.works,.about,.quote,.idea,.mood,.cta,footer,.bar');const where=(sec&&({NAV:'menu',HEADER:'topo',FOOTER:'rodape'}[sec.tagName]||({start:'por_onde_comecar',bar:'barra_mobile'})[sec.className.split(' ')[0]]||sec.id||sec.className.split(' ')[0]))||'';const txt=el.textContent.trim().slice(0,40),hr=el.getAttribute('href')||'';
 if(el.classList.contains('ban'))track('banner_cardapio',{where});
 if(hr.includes('wa.me'))track('whatsapp_click',{where,label:txt});
 if(hr.includes('instagram.com'))track('instagram_click',{where});
+if(hr.includes('spotify.com'))track('playlist_ouvir',{where});
 if(/tiktok/i.test(txt))track('tiktok_click',{where});
 if(/facebook/i.test(txt))track('facebook_click',{where});
 if(hr==='#orcamento'||hr==='#ideia')track('ir_'+hr.slice(1),{where,label:txt});
 if(el.classList.contains('pb'))track('problema_click',{label:txt});
 if(el.id==='pix')track('pix_copiado',{where})});
 // playlist (cole o link da sua playlist do Spotify em PLAYLIST)
-{const pm=PLAYLIST.match(/playlist\/([A-Za-z0-9]+)/);if(pm){$('#mu').hidden=false;$('#mu').onclick=()=>{const p=$('#mup');if(!p.firstChild)p.innerHTML=`<iframe title="Playlist" src="https://open.spotify.com/embed/playlist/${pm[1]}?theme=0" width="100%" height="152" allow="autoplay; encrypted-media" loading="lazy" style="border:0;border-radius:12px"></iframe>`;p.hidden=!p.hidden;track('playlist_abrir')}}}
+{if(PLAYLIST){$('#mu').hidden=false;$('#mu').onclick=()=>{const p=$('#mup');if(!p.firstChild)p.innerHTML=`<div class="mpc"><iframe title="Minha playlist no Spotify" src="https://open.spotify.com/embed/playlist/${PLAYLIST.match(/playlist\/([A-Za-z0-9]+)/)[1]}?utm_source=generator&theme=0" allow="autoplay; encrypted-media; clipboard-write" loading="lazy"></iframe><a class="lnk" href="${PLAYLIST}" target="_blank" rel="noopener">Abrir no Spotify</a></div>`;p.hidden=!p.hidden;track('playlist_abrir')}}}
 // trabalhos
 let moved=0;
 const PJ=[["Lavínia","Manual de identidade visual",[0]],["Suzy Esmaltaria","Mascote, logo e rótulo",[1,2,3,4]],["Costura e Fagulha","Identidade visual",[7,5,6]],["Doceria da Gaby","Logo, adesivos, embalagens e cartão",[10,8,9,11,12]],["Eliane","Identidade visual",[14,13]],["Barbearia do Thomaz","Logo e papelaria",[16,15,17]],["Lavíe","Logo e embalagens",[19,18]]];
