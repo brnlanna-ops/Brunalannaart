@@ -2,6 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0Z6RKWJHJB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0Z6RKWJHJB');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bruna Lanna Design | Designer em Belo Horizonte: identidade visual, logo e mascote</title>
 <meta name="description" content="Bruna Lanna é designer criativa e autodidata em Belo Horizonte, com experiência em design e e-commerce desde 2017. Identidade visual, logotipos, mascotes, figurinhas de WhatsApp, social media e peças para gráfica. Faça seu orçamento na hora.">
@@ -258,12 +261,11 @@ button.card{font:inherit;color:inherit;text-align:left;cursor:pointer}
 
 <section class="cta" id="contato">
   <h2 class="rv">Bora criar uma marca com a sua cara?</h2>
-  <div class="btns"><a class="btn" href="https://wa.me/5531989914624" target="_blank" rel="noopener">WhatsApp (31) 98991-4624</a><a class="btn" href="https://instagram.com/brunaart.digital" target="_blank" rel="noopener">Instagram</a><a class="btn" href="#contato">TikTok</a><a class="btn" href="#contato">Facebook</a></div>
+  <div class="btns"><a class="btn" href="https://wa.me/5531989914624" target="_blank" rel="noopener">WhatsApp (31) 98991-4624</a><a class="btn" href="https://instagram.com/brunaart.digital" target="_blank" rel="noopener">Instagram</a><a class="btn" href="https://www.tiktok.com/@brunaart.digital" target="_blank" rel="noopener">TikTok</a><a class="btn" href="https://www.facebook.com/share/1HTLHAmdYA/" target="_blank" rel="noopener">Facebook</a></div>
   <img class="masc" data-img="mascote" alt="">
 </section>
 <footer><img data-img="mono" alt=""><span>© 2026 Bruna Lanna Design · Belo Horizonte · <a href="https://instagram.com/brunaart.digital" target="_blank" rel="noopener">@brunaart.digital</a></span></footer>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Galeria do projeto"><button class="lbx" aria-label="Fechar">×</button><button class="lbn p" aria-label="Imagem anterior">‹</button><figure><img id="lbi" alt=""><figcaption id="lbc"></figcaption></figure><button class="lbn n" aria-label="Próxima imagem">›</button></div>
-<div class="ck" id="ck" hidden><span>Uso estatísticas anônimas para melhorar o site.</span><button id="ck1">Pode</button><button id="ck0">Agora não</button></div>
 <button class="mu" id="mu" hidden aria-label="Abrir playlist">♪</button><div class="mup" id="mup" hidden></div>
 <div class="bar"><a class="btn k" href="#orcamento">Orçamento</a><a class="btn" href="https://wa.me/5531989914624" target="_blank" rel="noopener">WhatsApp</a></div>
 
@@ -295,15 +297,10 @@ document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 // foto vira
 $('#flip').onclick=e=>{e.currentTarget.classList.toggle('f');burst(e.clientX,e.clientY)};
 
-// analytics (cole seu ID do Google Analytics 4 abaixo, no formato G-XXXXXXXXXX)
-const GA_ID='G-XXXXXXXXXX';
-const PLAYLIST='';
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+// analytics: a tag do Google Analytics fica no <head>; aqui só eventos e o aviso de privacidade
+const GA_ID='G-0Z6RKWJHJB';
+const PLAYLIST='https://open.spotify.com/playlist/37i9dQZF1CKUUaf9RWwqI5';
 function track(n,p){try{gtag('event',n,p||{})}catch(x){}}
-function loadGA(){const s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.append(s);gtag('js',new Date());gtag('config',GA_ID,{anonymize_ip:true})}
-{const ok=/^G-[A-Z0-9]{6,}$/.test(GA_ID)&&GA_ID!=='G-XXXXXXXXXX';let ck;try{ck=localStorage.getItem('bl_ga')}catch(x){}
-if(ok){if(ck==='yes')loadGA();else if(!ck)$('#ck').hidden=false}
-const sv=v=>{try{localStorage.setItem('bl_ga',v)}catch(x){}$('#ck').hidden=true;if(v==='yes')loadGA()};$('#ck1').onclick=()=>sv('yes');$('#ck0').onclick=()=>sv('no')}
 document.addEventListener('click',e=>{const el=e.target.closest('a,button');if(!el)return;const sec=el.closest('nav,.hero,.start,.serv,.works,.about,.quote,.idea,.mood,.cta,footer,.bar');const where=(sec&&({NAV:'menu',HEADER:'topo',FOOTER:'rodape'}[sec.tagName]||({start:'por_onde_comecar',bar:'barra_mobile'})[sec.className.split(' ')[0]]||sec.id||sec.className.split(' ')[0]))||'';const txt=el.textContent.trim().slice(0,40),hr=el.getAttribute('href')||'';
 if(el.classList.contains('ban'))track('banner_cardapio',{where});
 if(hr.includes('wa.me'))track('whatsapp_click',{where,label:txt});
